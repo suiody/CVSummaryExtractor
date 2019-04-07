@@ -1,0 +1,8 @@
+http://www.boost.org/users/license.html
+
+How is the Boost license different from the GNU General Public License (GPL)? The Boost license permits the creation of
+derivative works for commercial or non-commercial use with no legal requirement to release your source code. Other
+differences include Boost not requiring reproduction of copyright messages for object code redistribution, and the fact
+that the Boost license is not "viral": if you distribute your own code along with some Boost code, the Boost license
+applies only to the Boost code (and modified versions thereof); you are free to license your own code under any terms
+you like. The GPL is also much longer, and thus may be harder to understand.

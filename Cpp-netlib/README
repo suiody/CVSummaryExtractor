@@ -1,0 +1,49 @@
+cpp-netlib is a collection of network related routines/implementations geared towards providing a robust cross-platform
+networking library.
+
+To build it manually from release version:
+1. Install all required packages if these are not installed: openssl, threads
+2. Download the latest from https://github.com/cpp-netlib/cpp-netlib/downloads
+3. Unpack
+4. cd cpp-netlib
+5. Edit CMakeLists.txt
+a. Add the following line just below line project(CPP-NETLIB):
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+b.Comment out the following lines by adding #:
+    add_subdirectory(libs/network/test)
+    if (NOT MSVC)
+      add_subdirectory(libs/mime/test)
+    endif(NOT MSVC)
+    add_subdirectory(libs/network/example)
+c. Add line
+add_definitions(-DBOOST_NETWORK_ENABLE_HTTPS)
+after the line
+add_definitions(-DNETWORK_ENABLE_HTTPS)
+6. mkdir build
+7. cd build
+8. cmake .. -DCMAKE_BUILD_TYPE=Release
+9. make
+
+It will result in three static libraries libcppnetlib-client-connections.a, libcppnetlib-server-parsers.a and
+libcppnetlib-uri.a in build/libs/network/src/. Copy these to the libs/Darwin or libs/Linux (MAC or Centos builds) folder
+of CVSummaryExtractor. Please see http://cpp-netlib.org/0.9.4/getting_started.html for more.
+
+To build it manually from developer version (this should not be used until clear how to get that handle web requests):
+1. Install all required packages if these are not installed: icu, doxygen, openssl, threads
+2. git clone https://github.com/cpp-netlib/cpp-netlib
+3. cd cpp-netlib
+4. The project contains submodules for some dependencies and some libraries. Once you have cloned cpp-netlib, you must
+update the submodules:
+a. git submodule init
+b. git submodule update
+5. Edit CMakeLists.txt
+a. find option CPP-NETLIB_BUILD_TESTS and set it OFF
+b. find option CPP-NETLIB_BUILD_EXAMPLES and set it OFF
+6. mkdir build
+7. cd build
+8. cmake .. -DCMAKE_BUILD_TYPE=Release
+9. make
+
+It will result in single static library libcppnetlib.a in build/. Copy it to the libs folder of CVSummaryExtractor and modify
+CVSummaryExtractor project file CMakeLists.txt.
+

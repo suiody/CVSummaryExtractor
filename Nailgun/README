@@ -1,0 +1,24 @@
+To use Java operations with keeping JVM constantly running and therefore reducing time cost for every document
+transformation from .doc/.pdf/.odf etc. format to plain text format, a separate utility nailgun should be installed.
+
+The following applies to Centos 7.1 but with some modifications can be used elsewhere.
+
+1. copy nailgun-server-0.9.2.jar to the folder where you want to run it (/YOUR_FOLDER_NAME/)
+2. copy ng to the folder where you want to run it (/YOUR_FOLDER_NAME/)
+
+To build the client ng and server nailgun-server-0.9.2.jar, run the following:
+1. git clone https://github.com/martylamb/nailgun
+2. cd nailgun
+3. make && sudo make install
+4. mvn clean install
+If the last command will not work you probably want to install maven via
+sudo yum install maven
+or just copy the already made .jar to the end folder on Centos machine.
+
+1. Start the ng server via
+java -jar /YOUR_FOLDER_NAME/nailgun-server-0.9.2.jar
+2. Then register it with
+/YOUR_FOLDER_NAME/ng ng-cp /YOUR_FOLDER_NAME/tika-app-1.9.jar
+3. Use it with
+/YOUR_FOLDER_NAME/ng org.apache.tika.cli.TikaCLI --encoding=UTF-8 --text "/YOUR_CV_FOLDER_NAME/YOUR_CV.doc"
+

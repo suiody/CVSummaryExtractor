@@ -1,0 +1,21 @@
+Cld is a stand-alone C++ library for the Chromium Compact Language Detector. Used mainly for detecting the language
+of text. Origin: http://mzsanford.com/blog/introducing-libcld/
+
+Some tools may be required before installing.
+On CentOS run:
+sudo yum install git dialog automake autoconf libtool
+
+To install it from the external source:
+
+1. git clone http://github.com/mzsanford/cld.git
+2. cd cld
+3. ./configure && make
+4. make check # test early. Test often.
+5. sudo make install
+
+To install it from local source
+1. Copy cld from the same source where CVSummaryExtractor resides
+2. cd cld
+3. ./configure && make
+4. make check # test early. Test often.
+5. sudo make install
